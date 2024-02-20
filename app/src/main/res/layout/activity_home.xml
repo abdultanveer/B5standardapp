@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6F88CF"
     tools:context=".HomeActivity">
 
     <TextView
@@ -13,7 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
         android:layout_marginTop="151dp"
+        android:layout_marginBottom="1dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
