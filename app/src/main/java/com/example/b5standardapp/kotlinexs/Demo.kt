@@ -1,7 +1,11 @@
 package com.example.b5standardapp.kotlinexs
 
+import com.example.b5standardapp.kotlinexs.lamdas.LamdasDemo
+import com.example.b5standardapp.kotlinexs.lamdas.ReceiverPhone
 import com.example.b5standardapp.kotlinexs.lamdas.SayImpl
 import com.example.b5standardapp.kotlinexs.lamdas.Sayable
+
+class Demo{}
 
 /*fun main() {
    // birthdayGreeting()
@@ -17,6 +21,10 @@ fun birthdayGreeting() {
 
 
 fun main() {
+    var ldemo = LamdasDemo()
+    var receptionist = ReceiverPhone()
+    ldemo.ansariAdd(30,40,receptionist)
+
     // All examples create a function object that performs upper-casing.
     // So it's a function from String to String
 
