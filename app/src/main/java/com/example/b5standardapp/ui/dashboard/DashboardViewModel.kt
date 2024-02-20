@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.b5standardapp.data.Item
 import com.example.b5standardapp.data.ItemDao
@@ -45,6 +46,11 @@ class DashboardViewModel(private val itemDao: ItemDao) : ViewModel() {
 
              itemDao.insert(item)
          }
+    }
+
+    fun retrieveItem(id: Int): LiveData<Item> {
+        return itemDao.getItem(id).asLiveData()
+
     }
 
 /*    private val _text = MutableLiveData<String>().apply {

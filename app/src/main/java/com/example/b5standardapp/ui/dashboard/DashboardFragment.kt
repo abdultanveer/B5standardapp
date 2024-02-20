@@ -27,7 +27,6 @@ class DashboardFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,8 +61,19 @@ class DashboardFragment : Fragment() {
                 viewModel.insertData(item)
             }
 
+        binding.btnFind.setOnClickListener { findItem() }
+
+
+
             return root
         }
+
+
+    private fun findItem() {
+        viewModel.retrieveItem(binding.etId.text.toString().toInt()).observe(this.viewLifecycleOwner) {
+                foundItem -> binding.textDashboard.text = foundItem.toString()
+        }
+    }
 
 
 
