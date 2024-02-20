@@ -35,6 +35,15 @@ class HomeFragment : Fragment() {
         return root
     }
 
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

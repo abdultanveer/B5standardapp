@@ -29,9 +29,18 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        /*dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }*/
+        binding.textDashboard.text = dashboardViewModel.number.toString()
+
+        // var no = 0
+        binding.btnInc.setOnClickListener {
+           // no++
+            dashboardViewModel.addNumber()
+            binding.textDashboard.text = dashboardViewModel.number.toString()
         }
+
         return root
     }
 
