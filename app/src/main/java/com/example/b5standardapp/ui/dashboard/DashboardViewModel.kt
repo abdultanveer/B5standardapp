@@ -4,8 +4,13 @@ import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.example.b5standardapp.data.Item
+import com.example.b5standardapp.data.ItemDao
+import kotlinx.coroutines.launch
 
-class DashboardViewModel : ViewModel() {
+class DashboardViewModel(private val itemDao: ItemDao) : ViewModel() {
     lateinit var timer: CountDownTimer
     private  val _seconds = MutableLiveData<Int>() //int as an observable
 
@@ -35,8 +40,28 @@ class DashboardViewModel : ViewModel() {
         number++
     }
 
-    private val _text = MutableLiveData<String>().apply {
+     fun insertData(item: Item) {
+         viewModelScope.launch {
+
+             itemDao.insert(item)
+         }
+    }
+
+/*    private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
     }
-    val text: LiveData<String> = _text
+    val text: LiveData<String> = _text*/
+
+
+
+}
+
+class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(DashboardViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return DashboardViewModel(itemDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")    }
 }
